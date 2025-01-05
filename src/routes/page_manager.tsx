@@ -36,6 +36,7 @@ export default function PageManager() {
           prefetch
           action={() => handleAction(fetchSelectedVideo)}
           classList='watch'
+          isVisited
         />
         <Route
           element={<Channel />}

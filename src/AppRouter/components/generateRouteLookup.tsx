@@ -12,6 +12,7 @@ interface RouteProps {
   action?: (...args: any[]) => Promise<void>;
   index?: boolean;
   classList?: string;
+  isVisited?: boolean;
 }
 
 export interface RouteEntry {
@@ -98,7 +99,7 @@ export function generateRouteLookup(
         element: child.props.element,
         prefetch: child.props.prefetch,
         action: child.props.action,
-        isVisited: false,
+        isVisited: child.props.isVisited ?? false,
         parent: parentFullPath,
         index: !!child.props.index,
         isActive: false,
