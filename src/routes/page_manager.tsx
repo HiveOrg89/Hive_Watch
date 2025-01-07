@@ -22,7 +22,7 @@ export default function PageManager() {
   };
   return (
     <div className='page-manager'>
-      <AppRouter cacheEnabled>
+      <AppRouter persist>
         <Route
           element={<Home />}
           path='/'

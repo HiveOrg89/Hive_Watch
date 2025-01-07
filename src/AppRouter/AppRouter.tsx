@@ -19,16 +19,16 @@ import ErrorComponent from "./components/Error/error";
 
 interface AppRouterProps {
   children: ReactNode[] & { props: RouteProps }[];
-  cacheEnabled?: boolean;
+  persist?: boolean;
 }
 
 export default function AppRouter({
   children,
-  cacheEnabled = false,
+  persist = false,
 }: AppRouterProps) {
   // Generate route lookup on initial render
   const routeLookup = useMemo(() => {
-    return generateRouteLookup(children, cacheEnabled);
+    return generateRouteLookup(children, persist);
   }, [children]);
 
   const alreadyVisitiedChildren = useMemo(() => {
@@ -52,7 +52,7 @@ export default function AppRouter({
   const updateUI = (params: any, route: RouteEntry) => {
     if (key !== prevKey.current) return;
 
-    if (cacheEnabled) {
+    if (persist) {
       // Add route to currentRoutes, replacing an existing route if the componentID matches
       setCurrentRoutes((prevRoutes) => {
         const routeIndex = prevRoutes.findIndex(
