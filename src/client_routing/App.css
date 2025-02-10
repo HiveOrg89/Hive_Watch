@@ -1,0 +1,104 @@
+:root{
+  --fullScreenHeight: 100%;
+  --fullScreenWidth: 100%;
+  --normalPlayerWidth: 100%;
+  --normalPlayerHeight: 100%;
+  --theatreWidth: 100%;
+  --theatreHeight: 100%;
+}
+
+#root {
+  width: 100%;
+
+}
+#hvd-app{
+  width: 100%;
+  height: fit-content;
+  max-height: 100vh;
+  min-height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.hvd-app-flexy{
+  display: flex;
+  gap: 10px;
+}
+
+.route-buttons{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+.route-buttons a{
+  width: fit-content;
+  white-space: nowrap;
+  padding: 3px 5px;
+}
+
+.route-buttons::-webkit-scrollbar{
+  display: none;
+}
+
+.page-manager{
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+
+}
+
+.hvd-app-browse{
+  width: 100%;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.route-handler{
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+  margin: auto;
+
+}
+.route-handler a{
+  padding: 10px;
+  border: 1px solid #646cffaa;
+}
