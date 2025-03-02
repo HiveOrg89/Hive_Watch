@@ -1,5 +1,5 @@
 // Should be reusable
-
+"use client";
 import { useEffect } from "react";
 import { PlayerBounds, VideoDetails } from "../../../../types/player_types";
 import "./player.css";

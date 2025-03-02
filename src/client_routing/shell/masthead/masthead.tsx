@@ -6,10 +6,11 @@ import "./masthead.css";
 export default function Masthead() {
   return (
     <div className='masthead'>
-      <GuideBtn />
-      <Link to='/'>
-        <HvdLogo />
-      </Link>
+      <div className='mast-start'>
+        <GuideBtn />
+      </div>
+      <div className='mast-center'></div>
+      <div className='mast-end'></div>
     </div>
   );
 }

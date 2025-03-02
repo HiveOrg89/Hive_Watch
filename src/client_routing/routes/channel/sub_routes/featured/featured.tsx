@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import OutLet from "../../../../AppRouter/components/Outlet";
 import Player from "../../../watch/components/player/player";

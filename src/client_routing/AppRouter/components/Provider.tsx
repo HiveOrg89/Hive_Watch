@@ -1,3 +1,4 @@
+"use client";
 import React, {
   createContext,
   useContext,
@@ -6,6 +7,7 @@ import React, {
   useLayoutEffect,
 } from "react";
 import { nanoid } from "nanoid";
+import { isServer } from "@/client_routing/util/util";
 
 // Define the types for the context
 export type AppRouterContextType = {
@@ -90,15 +92,19 @@ export const AppRouterProvider: React.FC<{
   const [params, setParams] = useState<Record<string, any> | null>(null);
   //
   const [location, setLocation] = useState({
-    origin: window.location.origin,
-    pathname: window.location.pathname,
-    search: window.location.search,
-    pathWithSearch: window.location.pathname + window.location.search,
+    origin: isServer ? "" : window.location.origin,
+    pathname: isServer ? "" : window.location.pathname,
+    search: isServer ? "" : window.location.search,
+    pathWithSearch: isServer
+      ? ""
+      : window.location.pathname + window.location.search,
     key: nanoid(7),
   });
 
   // use this so that ui updates are syncronized when prefetching is enabled
-  const [targetRoute, setTargetRoute] = useState(window.location.pathname);
+  const [targetRoute, setTargetRoute] = useState(
+    isServer ? "" : window.location.pathname
+  );
 
   useEffect(() => {
     const updateLocation = () => {
@@ -111,18 +117,21 @@ export const AppRouterProvider: React.FC<{
       });
     };
 
-    // Wrap pushState and replaceState to detect programmatic navigation
     const originalPushState = window.history.pushState;
     const originalReplaceState = window.history.replaceState;
 
+    const handleHistoryChange = () => {
+      setTimeout(updateLocation, 0); // Delay update to prevent race conditions
+    };
+
     window.history.pushState = function (...args) {
       originalPushState.apply(window.history, args);
-      updateLocation(); // Trigger update on pushState
+      handleHistoryChange(); // Trigger update on pushState
     };
 
     window.history.replaceState = function (...args) {
       originalReplaceState.apply(window.history, args);
-      updateLocation(); // Trigger update on replaceState
+      handleHistoryChange(); // Trigger update on replaceState
     };
 
     // Listen for popstate events (Back/Forward navigation)

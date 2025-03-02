@@ -10,9 +10,12 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
       dispatch(updateWindowWidth(window.innerWidth));
-    });
+    };
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
   }, []);
 
   return (

@@ -1,3 +1,4 @@
+"use client";
 import "./utils/shaka_global.js";
 import {
   createContext,
@@ -48,6 +49,7 @@ export const PlayerProvider = ({
   const playerSetUpRef = useRef(false); // Track if the player has been set up already
 
   useLayoutEffect(() => {
+    console.log(playerBounds);
     setPlayerBounds(_playerBounds);
   }, [_playerBounds]);
 

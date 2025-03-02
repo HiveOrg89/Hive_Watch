@@ -140,6 +140,24 @@
 }
 /* regular page styles */
 
+.guide-button{
+    width: 100%;
+    height: 56px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.guide-switcher{
+    padding: 5px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.guide-switcher:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 @media (max-width: 510px) {
     .hvd-app-flexy{

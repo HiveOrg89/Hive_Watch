@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const appSlice = createSlice({
   name: "app",
   initialState: {
-    windowWidth: window.innerWidth,
+    windowWidth: 0,
     mainGuideVisible: false,
     miniGuideVisible: false,
   },

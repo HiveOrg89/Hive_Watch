@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useLocation, useNavigate } from "../../AppRouter/components/Provider";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
@@ -55,6 +56,7 @@ export default function Watch() {
       maxWidth = window.screen.width;
     }
 
+    console.log("I ran");
     setPlayerBounds({ maxHeight, maxWidth, availableSpace });
   };
 

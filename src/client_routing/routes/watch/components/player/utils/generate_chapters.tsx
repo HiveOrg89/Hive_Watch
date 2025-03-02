@@ -1,3 +1,4 @@
+"use client";
 import { Chapter } from "../../../../../types/player_types";
 
 export function convertToSeconds(timeString: string): number {
@@ -10,7 +11,9 @@ export function convertToSeconds(timeString: string): number {
 
 const acceptable_characters = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-const split_string_into_timestamp_and_description = (string: string): Chapter[] => {
+const split_string_into_timestamp_and_description = (
+  string: string
+): Chapter[] => {
   const split_string_arr = string.split("\n");
   const chapters_array: Chapter[] = [];
 
@@ -34,7 +37,10 @@ const split_string_into_timestamp_and_description = (string: string): Chapter[] 
     }
 
     let end = description_string.length - 1;
-    while (end >= 0 && !acceptable_characters.includes(description_string[end].toLowerCase())) {
+    while (
+      end >= 0 &&
+      !acceptable_characters.includes(description_string[end].toLowerCase())
+    ) {
       end--;
     }
 
@@ -49,11 +55,17 @@ const split_string_into_timestamp_and_description = (string: string): Chapter[] 
   return chapters_array;
 };
 
-const make_chapter_obj = (chapters_array: Chapter[], duration: number): boolean => {
+const make_chapter_obj = (
+  chapters_array: Chapter[],
+  duration: number
+): boolean => {
   let is_valid_chapters = true;
 
   for (let i = 0; i < chapters_array.length; i++) {
-    if (i < chapters_array.length - 1 && chapters_array[i].start > chapters_array[i + 1].start) {
+    if (
+      i < chapters_array.length - 1 &&
+      chapters_array[i].start > chapters_array[i + 1].start
+    ) {
       is_valid_chapters = false;
       break;
     }
@@ -65,7 +77,8 @@ const make_chapter_obj = (chapters_array: Chapter[], duration: number): boolean 
       is_valid_chapters = false;
       break;
     }
-    chapters_array[i].end = i < chapters_array.length - 1 ? chapters_array[i + 1].start : duration;
+    chapters_array[i].end =
+      i < chapters_array.length - 1 ? chapters_array[i + 1].start : duration;
   }
 
   return is_valid_chapters;
