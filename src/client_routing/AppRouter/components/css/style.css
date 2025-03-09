@@ -1,0 +1,64 @@
+.fetching-loader{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #64686b;
+    height: 3px;
+    transform: scaleY(0);
+    transform-origin: top;
+    z-index: 1000000;
+
+
+}
+
+.fetching-loader.show{
+    transform: scaleY(1);
+}
+
+.fetching-loader__sliding-window{
+    width: 100%;
+    background-color: #3ea6ff;
+    height: 100%;
+    transition: transform 300ms ease;
+    transform-origin: left;
+    animation: moveSlidingWindow 2s ease-in-out forwards;
+
+    
+}
+
+.fetching-loader.done{
+    animation: getRidofLoader 400ms ease forwards;
+}
+
+.fetching-loader.done .fetching-loader__sliding-window{
+    animation: none;
+    transform: scaleX(1);
+}
+
+@keyframes getRidofLoader {
+    0%{
+        transform: scaleY(1);
+    }
+    70%{
+        transform: scaleY(1);
+    }
+    100%{
+        transform: scaleY(0);
+    }
+    
+}
+
+
+@keyframes moveSlidingWindow {
+    0%{
+        transform: scaleX(0);
+        
+    }
+    40%{
+        transform: scaleX(.3);
+    }
+    100%{
+        transform: scaleX(.8);
+    }
+}

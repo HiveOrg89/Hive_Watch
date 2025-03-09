@@ -1,15 +1,11 @@
-import Link from "../../AppRouter/components/Link";
-import "./home.css";
+import Link from "@/client_routing/AppRouter/components/Link";
 
 export default function Home() {
   return (
-    <>
-      <div className='filter-chip-bar'></div>
-
-      <h1>Home Page</h1>
-      <Link to={"/watch?v=Od7PbjTYPJi"}>Watch page</Link>
-      <Link to='/history'>history</Link>
-      <Link to='/WebDevSimplified'>WebDev</Link>
-    </>
+    <div className='home-route'>
+      <Link href='/watch?v=qyCRPfq5dqN'>Video</Link>
+      <Link href='/channel/@WebDevSimplified'>@WebDevSimplified</Link>
+      <h1>This is home page</h1>
+    </div>
   );
 }

@@ -74,14 +74,11 @@ export interface PlayerBounds {
 export interface PlayerContextProps {
   player: shaka.Player | null;
   setPlayer: React.Dispatch<React.SetStateAction<shaka.Player | null>>;
-  _videoDetails: VideoDetails | null;
-  setVideoDetails: React.Dispatch<React.SetStateAction<VideoDetails | null>>;
+  videoDetails: VideoDetails | null;
   chapters: Chapter[];
   setChapters: React.Dispatch<React.SetStateAction<Chapter[]>>;
   playerScope: string;
   setPlayerScope: React.Dispatch<React.SetStateAction<string>>;
-  playerBounds: PlayerBounds | null;
-  setPlayerBounds: React.Dispatch<React.SetStateAction<PlayerBounds | null>>;
   playerDimensions: DOMRect | null;
   setPlayerDimensions: React.Dispatch<React.SetStateAction<DOMRect | null>>;
   loadManifest: (...args: any) => void;

@@ -1,23 +1,21 @@
-import { ReactNode } from "react";
-import { useNavigate } from "./Provider";
+import { MouseEvent, ReactNode } from "react";
+import { useNavigate } from "./hooks";
 
 interface LinkProps {
   children: ReactNode;
-  to: string;
+  href: string;
 }
-
-export default function Link({ children, to }: LinkProps) {
+export default function Link({ children, href }: LinkProps) {
   const navigate = useNavigate();
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if (to) {
-      navigate(to);
+    if (href) {
+      navigate(href);
     }
   };
 
   return (
-    <a href={to} onClick={handleClick}>
+    <a href={href} onClick={(e) => handleLinkClick(e)}>
       {children}
     </a>
   );

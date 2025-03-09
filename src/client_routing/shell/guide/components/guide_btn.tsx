@@ -1,11 +1,11 @@
-import Link from "@/client_routing/AppRouter/components/Link";
-import { useBrowserContext } from "../../../AppRouter/components/Provider";
+import { useAppRouterContext } from "@/client_routing/AppRouter/components/contexts/AppRouterContext";
 import {
   toggleMainGuideVisibility,
   toggleMiniGuideVisibility,
-} from "../../../store/app/slice";
+} from "../../../store/app_store/slice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
 import { BurgerSvg, HvdLogo } from "@/client_routing/assets/icons";
+import Link from "@/client_routing/AppRouter/components/Link";
 
 export default function GuideBtn() {
   const { windowWidth, mainGuideVisible, miniGuideVisible } = useAppSelector(
@@ -14,10 +14,10 @@ export default function GuideBtn() {
 
   const dispatch = useAppDispatch();
 
-  const { targetRoute } = useBrowserContext();
+  const { targetRoute } = useAppRouterContext();
 
   const handleClick = () => {
-    if (targetRoute !== "/watch" && windowWidth > 1200) {
+    if (!targetRoute.includes("/watch") && windowWidth > 1200) {
       dispatch(toggleMiniGuideVisibility(!miniGuideVisible));
     } else {
       dispatch(toggleMainGuideVisibility(!mainGuideVisible));
@@ -29,7 +29,7 @@ export default function GuideBtn() {
       <div className='guide-switcher' onClick={handleClick}>
         <BurgerSvg />
       </div>
-      <Link to='/'>
+      <Link href='/'>
         <HvdLogo />
       </Link>
     </div>

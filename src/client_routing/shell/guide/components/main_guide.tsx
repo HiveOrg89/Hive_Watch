@@ -1,22 +1,20 @@
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
-import { toggleMainGuideVisibility } from "../../../store/app/slice";
+import { toggleMainGuideVisibility } from "../../../store/app_store/slice";
 import GuideBtn from "./guide_btn";
-import { useBrowserContext } from "../../../AppRouter/components/Provider";
+import { useAppRouterContext } from "@/client_routing/AppRouter/components/contexts/AppRouterContext";
 
 export default function MainGuide() {
   const { windowWidth, mainGuideVisible, miniGuideVisible } = useAppSelector(
     (state) => state.app
   );
-  const { targetRoute } = useBrowserContext();
+  const { targetRoute } = useAppRouterContext();
   const dispatch = useAppDispatch();
   const mainGuideOuterRef = useRef<HTMLDivElement>(null);
-  const isWatchPage = targetRoute === "/watch";
+  const isWatchPage = targetRoute.includes("/watch");
   const showTopSection = windowWidth <= 1200 || isWatchPage;
 
   useEffect(() => {
-    // if (mainGuideVisible && targetRoute === "/watch") dispatch(toggleMainGuideVisibility(null));
-
     if (isWatchPage) return;
     // resetting the main guide so its hidden instantly when not needed
     if (windowWidth <= 1200 && mainGuideOuterRef.current) {

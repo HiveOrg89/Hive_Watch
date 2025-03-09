@@ -1,27 +1,24 @@
-import { useParams } from "../../AppRouter/components/Provider";
-import Link from "../../AppRouter/components/Link";
-import OutLet from "../../AppRouter/components/Outlet";
-import "./channel.css";
+import {
+  useNavigate,
+  useParams,
+} from "@/client_routing/AppRouter/components/hooks";
+import Link from "@/client_routing/AppRouter/components/Link";
+import OutLet from "@/client_routing/AppRouter/components/OutLet";
 
 export default function Channel() {
   const params = useParams();
+  const navigate = useNavigate();
 
   return (
-    <>
-      <Link to='/'>Home</Link>
-      <h1>{params?.channelName}</h1>
-      <h3>{params?.subRoute}</h3>
-      <div className='route-handler'>
-        <Link to={`/${params?.channelName}/featured`}>featured</Link>
-        <Link to={`/${params?.channelName}/videos`}>videos</Link>
-        <Link to={`/${params?.channelName}/videos/inner`}>videos inner</Link>
-        <Link to={`/${params?.channelName}/videos/inner/someId`}>
-          videos inner2
-        </Link>
+    <div className='channel-page'>
+      <div className='button-row'>
+        <div onClick={() => navigate(`/channel/${params.channel}/featured`)}>
+          Featured
+        </div>
+        <Link href={`/channel/${params.channel}/videos`}>Videos</Link>
+        <Link href={`/channel/${params.channel}/live`}>Live</Link>
       </div>
-      <div className='route-renderer'>
-        <OutLet />
-      </div>
-    </>
+      <OutLet />
+    </div>
   );
 }
