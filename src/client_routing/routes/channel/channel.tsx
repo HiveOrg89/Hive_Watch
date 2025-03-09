@@ -4,6 +4,7 @@ import {
 } from "@/client_routing/AppRouter/components/hooks";
 import Link from "@/client_routing/AppRouter/components/Link";
 import OutLet from "@/client_routing/AppRouter/components/OutLet";
+import "./style.css";
 
 export default function Channel() {
   const params = useParams();

@@ -1,0 +1,12 @@
+.route-wrapper{
+    width: 100%;
+}
+
+.html5-player-container[data-scope="watch_page"]{
+    width: 100%;
+    max-width: 700px;
+}
+
+.html5-player-container[data-scope="watch_page"] .html5-player{
+    width: 100%;
+}

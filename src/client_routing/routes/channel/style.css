@@ -1,0 +1,8 @@
+.html5-player-container[data-scope="featured_page"]{
+    width: 100%;
+    max-width: 400px;
+}
+
+.html5-player-container[data-scope="featured_page"] .html5-player{
+    width: 100%;
+}

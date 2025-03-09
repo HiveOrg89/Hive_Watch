@@ -7,14 +7,14 @@ export default function ChannelFeaturedPage() {
 
   const { featuredVideo } = featured;
 
-  console.log(featuredVideo);
   const { isHidden } = useRouteProperties();
+
   return (
-    <div className='featured-page'>
+    <div className='featured_-age'>
       <h3>This is the featured page</h3>
       <Player
         videoDetails={isHidden ? null : featuredVideo}
-        scope='featured-page'
+        scope='featured_page'
       />
     </div>
   );
