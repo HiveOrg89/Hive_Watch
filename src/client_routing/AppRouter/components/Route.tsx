@@ -25,14 +25,9 @@ export const Route = ({
   const fullParentPath = parentPath + path;
 
   useEffect(() => {
-    if (isFetching || action) return;
-    shouldRender && setIsVisited(true);
-  }, [isFetching, shouldRender]);
-
-  useEffect(() => {
     if (isFetching) return;
-    shouldRender && console.log("updating ui", fullParentPath);
     setUpdateUI(shouldRender);
+    shouldRender && setIsVisited(true);
   }, [targetRoute, shouldRender, isFetching]);
 
   useEffect(() => {
