@@ -8,7 +8,12 @@ export const AppRouter = ({ children }: AppRouterProps) => {
     <>
       <RouteFetchingLoader />
       <ComponentProvider
-        initialValue={{ componentChildren: <></>, parentPath: "", params: {} }}
+        initialValue={{
+          componentChildren: <></>,
+          parentPath: "",
+          params: {},
+          isHidden: false,
+        }}
       >
         {children}
       </ComponentProvider>

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 // Simulating a delayed API call
 const fetchChannelData = async (handle: string) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 300));
 
   return {
     channelId: "UCyT8HNBui789BJJBSC89",
@@ -14,7 +14,7 @@ const fetchChannelData = async (handle: string) => {
 export async function generateMetadata({
   params,
 }: {
-  params: { handle: string }; // 🔥 Get dynamic `handle` from route
+  params: Promise<{ handle: string }>; // 🔥 Get dynamic `handle` from route
 }): Promise<Metadata> {
   const channelParams = await params;
   const channelData = await fetchChannelData(channelParams.handle);

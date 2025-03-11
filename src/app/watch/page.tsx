@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 // Simulating a delayed API call
 const fetchVideoData = async (id: string | null) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 300));
 
   return {
     id,
@@ -16,7 +16,7 @@ const fetchVideoData = async (id: string | null) => {
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: { v?: string };
+  searchParams: Promise<{ v?: string }>;
 }): Promise<Metadata> {
   const sParams = await searchParams;
   const video = await fetchVideoData(sParams.v ?? null);
