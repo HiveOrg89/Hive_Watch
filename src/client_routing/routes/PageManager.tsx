@@ -1,5 +1,5 @@
 import { AppRouter } from "../AppRouter/AppRouter";
-import { Route } from "../AppRouter/components/route";
+import { Route } from "../AppRouter/components/Route";
 import { useAppDispatch } from "../store/hooks/hooks";
 import { fetchChannelContent } from "../store/route_store/channel/actions";
 import { fetchFeed } from "../store/route_store/home/actions";
